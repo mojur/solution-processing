@@ -17,6 +17,9 @@ trim_trailing_whitespace = true
 indent_size = 4
 max_line_length = 120
 
+[*.md]
+max_line_length = 80
+
 ###############################
 #    C# Coding Conventions    #
 ###############################
