@@ -1,0 +1,56 @@
+# Restyled Configuration
+
+# For more advanced documentation see:
+# https://github.com/restyled-io/restyler/blob/master/config/default.yaml
+
+# Do anything at all
+enabled: true
+
+# Patterns to exclude from all Restylers
+exclude:
+  - ".github/workflows/**/*" # https://github.com/restyled-io/restyler/issues/73
+
+# Push the style fixes directly to the original PR
+auto: false
+
+# Download remote files before restyling
+remote_files: []
+
+# Open Restyle PRs?
+pull_requests: true
+
+# Leave comments on the original PR linking to the Restyle PR?
+comments: false
+
+# Set commit statuses
+statuses:
+  differences: true
+  no_differences: true
+  error: true
+
+# Request review on the Restyle PR
+request_review: author
+
+# Add labels to any created Restyle PRs
+labels:
+  - restyled
+
+# Labels to ignore
+ignore_labels:
+  - restyled-ignore
+
+# Version of the set of Restylers to run
+restylers_version: "20200331"
+
+# Restylers to run, and how
+restylers: 
+  - name: dotnet-format
+    enabled: true
+    image: restyled/restyler-dotnet-format:v0.0.1-2
+    command:
+      - dotnet-format-files
+    arguments: []
+    include:
+      - "**/*.cs"
+      - "**/*.vb"
+    interpreters: []
