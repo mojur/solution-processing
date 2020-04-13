@@ -161,7 +161,7 @@ csharp_indent_braces = false
 csharp_indent_case_contents_when_block = false
 
 # New Line Preferences
-csharp_new_line_before_open_brace = types,methods,control_blocks,local_functions
+csharp_new_line_before_open_brace = all
 csharp_new_line_before_else = true
 csharp_new_line_before_catch = true
 csharp_new_line_before_finally = true
@@ -271,7 +271,7 @@ csharp_style_throw_expression = true:suggestion
 csharp_style_conditional_delegate_call = true:suggestion
 
 # Code Block Preferences
-csharp_prefer_braces = when_multiline:warning
+csharp_prefer_braces = true:warning
 
 # Unused Value Preferences
 csharp_style_unused_value_expression_statement_preference = discard_variable:warning
