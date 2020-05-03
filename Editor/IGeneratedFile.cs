@@ -15,8 +15,8 @@ namespace Mojur.Unity.SolutionProcessing
         FileInfo File { get; }
 
         /// <summary>
-        /// Contents of the generated file.
+        /// Content of the generated file.
         /// </summary>
-        string Contents { get; set; }
+        string Content { get; set; }
     }
 }

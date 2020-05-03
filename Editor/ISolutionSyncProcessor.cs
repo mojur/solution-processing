@@ -3,14 +3,14 @@
 namespace Mojur.Unity.SolutionProcessing
 {
     /// <summary>
-    /// Processes/edits solution and project files as they are generated.
+    /// Processes solution synchronization events
     /// </summary>
-    public abstract class SolutionProcessor
+    public interface ISolutionSyncProcessor
     {
         /// <summary>
         /// Registers processing actions to solution processing events with <paramref name="events"/>.
         /// </summary>
         /// <param name="events">Events on which to register processing actions.</param>
-        public abstract void RegisterSubscriptions(ISolutionSyncEvents events);
+        void RegisterSubscriptions(ISolutionSyncEvents events);
     }
 }

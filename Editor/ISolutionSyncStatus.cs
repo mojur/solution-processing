@@ -10,6 +10,6 @@ namespace Mojur.Unity.SolutionProcessing
         /// <summary>
         /// Whether the the synchronization is complete.
         /// </summary>
-        bool Complete { get; set; }
+        bool AbortSync { get; set; }
     }
 }

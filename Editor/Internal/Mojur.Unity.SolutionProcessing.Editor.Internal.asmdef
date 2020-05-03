@@ -4,6 +4,7 @@
         "GUID:6384f42c860431c4194d410a07bf5d24",
         "GUID:e13643193ffcac649b980bd9ed937d5c"
     ],
+    "optionalUnityReferences": [],
     "includePlatforms": [
         "Editor"
     ],
@@ -13,6 +14,5 @@
     "precompiledReferences": [],
     "autoReferenced": false,
     "defineConstraints": [],
-    "versionDefines": [],
-    "noEngineReferences": false
+    "versionDefines": []
 }

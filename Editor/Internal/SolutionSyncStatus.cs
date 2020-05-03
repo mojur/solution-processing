@@ -4,19 +4,19 @@ namespace Mojur.Unity.SolutionProcessing.Internal
 {
     internal class SolutionSyncStatus : ISolutionSyncStatus
     {
-        private bool complete;
+        private bool abortSync;
 
         /// <inheritdoc/>
         /// <remarks>Assignments of 'true' override all previous and further assignments.</remarks>
-        public bool Complete
+        public bool AbortSync
         {
-            get => this.complete;
-            set => this.complete |= value;
+            get => this.abortSync;
+            set => this.abortSync |= value;
         }
 
-        public SolutionSyncStatus(bool complete = false)
+        public SolutionSyncStatus(bool abortSync = false)
         {
-            this.complete = complete;
+            this.abortSync = abortSync;
         }
     }
 }
