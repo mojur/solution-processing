@@ -10,12 +10,12 @@ namespace Mojur.Unity.SolutionProcessing.Internal
         public FileInfo File { get; }
 
         /// <inheritdoc/>
-        public string Contents { get; set; }
+        public string Content { get; set; }
 
         public GeneratedFile(FileInfo file, string contents)
         {
             this.File = file;
-            this.Contents = contents;
+            this.Content = contents;
         }
     }
 }

@@ -23,7 +23,7 @@ namespace Mojur.Unity.SolutionProcessing
         /// Occurs when the .sln file has completed generation.
         /// </summary>
         /// <remarks>
-        /// Contents of .sln file will be overwritten by the content of <see cref="IGeneratedFile"/>.
+        /// Content of .sln file will be overwritten by the content of <see cref="IGeneratedFile"/>.
         /// Triggered before <see cref="CSProjGenerated"/>.
         /// </remarks>
         event Action<IGeneratedFile> SlnGenerated;
@@ -32,7 +32,7 @@ namespace Mojur.Unity.SolutionProcessing
         /// Occurs for each .csproj file that has completed generation.
         /// </summary>
         /// <remarks>
-        /// Contents of .csproj file will be overwritten by the content of <see cref="IGeneratedFile"/>.
+        /// Content of .csproj file will be overwritten by the content of <see cref="IGeneratedFile"/>.
         /// Triggered after <see cref="SlnGenerated"/>.
         /// </remarks>
         event Action<IGeneratedFile> CSProjGenerated;

@@ -1,5 +1,6 @@
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 
+using System;
 using UnityEditor;
 
 namespace Mojur.Unity.SolutionProcessing.Internal
@@ -10,8 +11,20 @@ namespace Mojur.Unity.SolutionProcessing.Internal
     /// </summary>
     internal class SolutionSyncUnitySubscriber : AssetPostprocessor
     {
-        /// <remarks>Must not be read-only to allow for unit testing.</remarks>
-        private static ISolutionSyncSubscriber _subscriber = new SolutionSyncPublisher();
+        public static ISolutionSyncPublisher Publisher { get; set; }
+
+        /// <inheritdoc />
+        static SolutionSyncUnitySubscriber()
+        {
+            ResetPublisher();
+        }
+
+        public static void ResetPublisher()
+        {
+            Publisher = new SolutionSyncPublishManager(
+                new SolutionProcessorPublisherFactory(
+                    new OmniscientSolutionProcessorRepository(AppDomain.CurrentDomain.GetAssemblies())));
+        }
 
         /// <summary>
         /// Called when the solution synchronization is starting (.csproj and .sln files).
@@ -20,7 +33,7 @@ namespace Mojur.Unity.SolutionProcessing.Internal
         /// <returns>True if the solution synchronization is complete; false otherwise.</returns>
         private static bool OnPreGeneratingCSProjectFiles()
         {
-            return _subscriber.OnPreGeneratingCSProjectFiles();
+            return Publisher.PublishSolutionSyncing();
         }
 
         /// <summary>
@@ -32,7 +45,7 @@ namespace Mojur.Unity.SolutionProcessing.Internal
         /// <returns>New content of the .sln solution file.</returns>
         private static string OnGeneratedSlnSolution(string path, string content)
         {
-            return _subscriber.OnGeneratedSlnSolution(path, content);
+            return Publisher.PublishSlnGenerated(path, content);
         }
 
         /// <summary>
@@ -44,7 +57,7 @@ namespace Mojur.Unity.SolutionProcessing.Internal
         /// <returns>New content of the .csproj project file.</returns>
         private static string OnGeneratedCSProject(string path, string content)
         {
-            return _subscriber.OnGeneratedCSProject(path, content);
+            return Publisher.PublishCsprojGenerated(path, content);
         }
 
         /// <summary>
@@ -53,7 +66,7 @@ namespace Mojur.Unity.SolutionProcessing.Internal
         /// <remarks>Called by Unity via reflection.</remarks>
         private static void OnGeneratedCSProjectFiles()
         {
-            _subscriber.OnGeneratedCSProjectFiles();
+            Publisher.PublishSolutionSynced();
         }
     }
 }
