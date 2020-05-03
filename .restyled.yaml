@@ -48,8 +48,7 @@ restylers:
     enabled: true
     image: restyled/restyler-dotnet-format:v0.0.1-2
     command:
-      - dotnet-format
-      - "--files"
+      - dotnet-format-files
       - "--folder ."
     arguments: []
     include:
