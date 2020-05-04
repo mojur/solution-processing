@@ -1,0 +1,24 @@
+{
+    "name": "Mojur.Unity.SolutionProcessing.Editor.Tests",
+    "references": [
+        "GUID:26a3e7210ba9cd440b42955c147072f5",
+        "GUID:6384f42c860431c4194d410a07bf5d24",
+        "GUID:15ddb5946a2fb774986868ab74a9fdf4"
+    ],
+    "optionalUnityReferences": [
+        "TestAssemblies"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": true,
+    "precompiledReferences": [
+        "NSubstitute.dll",
+        "System.Threading.Tasks.Extensions.dll"
+    ],
+    "autoReferenced": false,
+    "defineConstraints": [],
+    "versionDefines": []
+}
