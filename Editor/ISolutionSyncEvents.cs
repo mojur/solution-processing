@@ -15,7 +15,7 @@ namespace Mojur.Unity.SolutionProcessing
         /// <remarks>
         /// A completed status of true in <see cref="ISolutionSyncStatus"/> results in
         /// neither .csproj's nor .sln's being generated. Thus <see cref="SlnGenerated"/>
-        /// and <see cref="CSProjGenerated"/> events are not triggered.
+        /// and <see cref="CsprojGenerated"/> events are not triggered.
         /// </remarks>
         event Action<ISolutionSyncStatus> SolutionSyncing;
 
@@ -24,7 +24,7 @@ namespace Mojur.Unity.SolutionProcessing
         /// </summary>
         /// <remarks>
         /// Content of .sln file will be overwritten by the content of <see cref="IGeneratedFile"/>.
-        /// Triggered before <see cref="CSProjGenerated"/>.
+        /// Triggered before <see cref="CsprojGenerated"/>.
         /// </remarks>
         event Action<IGeneratedFile> SlnGenerated;
 
@@ -35,7 +35,7 @@ namespace Mojur.Unity.SolutionProcessing
         /// Content of .csproj file will be overwritten by the content of <see cref="IGeneratedFile"/>.
         /// Triggered after <see cref="SlnGenerated"/>.
         /// </remarks>
-        event Action<IGeneratedFile> CSProjGenerated;
+        event Action<IGeneratedFile> CsprojGenerated;
 
         /// <summary>
         /// Occurs when solution synchronization is complete (.csproj and .sln files).

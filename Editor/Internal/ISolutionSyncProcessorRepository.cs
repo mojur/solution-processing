@@ -6,7 +6,7 @@ namespace Mojur.Unity.SolutionProcessing.Internal
 {
     /// <summary>
     /// Gathers <see cref="ISolutionSyncProcessor"/>s.
-    /// </summary>b
+    /// </summary>
     internal interface ISolutionSyncProcessorRepository
     {
         /// <summary>

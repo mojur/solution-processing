@@ -18,16 +18,16 @@ namespace Mojur.Unity.SolutionProcessing.Internal
         public event Action<IGeneratedFile> SlnGenerated;
 
         /// <inheritdoc />
-        public event Action<IGeneratedFile> CSProjGenerated;
+        public event Action<IGeneratedFile> CsprojGenerated;
 
         /// <inheritdoc />
         public event Action SolutionSynced;
 
-        public SolutionProcessorPublisher(IEnumerable<ISolutionSyncProcessor> listeners)
+        public SolutionProcessorPublisher(IEnumerable<ISolutionSyncProcessor> processors)
         {
-            foreach (var listener in listeners)
+            foreach (var processor in processors)
             {
-                listener.RegisterSubscriptions(this);
+                processor.RegisterSubscriptions(this);
             }
         }
 
@@ -41,19 +41,19 @@ namespace Mojur.Unity.SolutionProcessing.Internal
         }
 
         /// <inheritdoc />
-        public string PublishSlnGenerated(string path, string contents)
+        public string PublishSlnGenerated(string path, string content)
         {
-            var file = new GeneratedFile(new FileInfo(path), contents);
+            var file = new GeneratedFile(new FileInfo(path), content);
             this.SlnGenerated?.Invoke(file);
 
             return file.Content;
         }
 
         /// <inheritdoc />
-        public string PublishCsprojGenerated(string path, string contents)
+        public string PublishCsprojGenerated(string path, string content)
         {
-            var file = new GeneratedFile(new FileInfo(path), contents);
-            this.CSProjGenerated?.Invoke(file);
+            var file = new GeneratedFile(new FileInfo(path), content);
+            this.CsprojGenerated?.Invoke(file);
 
             return file.Content;
         }
