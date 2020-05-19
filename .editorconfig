@@ -43,15 +43,15 @@ dotnet_naming_rule.constants_must_be_pascal_case.symbols = constants
 dotnet_naming_rule.constants_must_be_pascal_case.style = pascal_style
 dotnet_naming_rule.constants_must_be_pascal_case.severity = error
 
-# Protected Members Must Be Camel Case
-dotnet_naming_rule.protected_members_must_be_camel_case.symbols = protected_members
-dotnet_naming_rule.protected_members_must_be_camel_case.style = camel_style
-dotnet_naming_rule.protected_members_must_be_camel_case.severity = error
+# Nonpublic Members Must Be Camel Case
+dotnet_naming_rule.nonpublic_members_must_be_camel_case.symbols = nonpublic_members
+dotnet_naming_rule.nonpublic_members_must_be_camel_case.style = camel_style
+dotnet_naming_rule.nonpublic_members_must_be_camel_case.severity = error
 
-# Private Members Must Be Camel Case
-dotnet_naming_rule.private_members_must_be_camel_case.symbols = private_members
-dotnet_naming_rule.private_members_must_be_camel_case.style = camel_style
-dotnet_naming_rule.private_members_must_be_camel_case.severity = error
+# Nonpublic Static Members Must Start With Underscore
+dotnet_naming_rule.private_static_members_must_start_with_underscore.symbols = nonpublic_static_members
+dotnet_naming_rule.private_static_members_must_start_with_underscore.style = underscore_prefix_style
+dotnet_naming_rule.private_static_members_must_start_with_underscore.severity = error
 
 # Locals Must Be Camel Case
 dotnet_naming_rule.locals_must_be_camel_case.symbols = locals
@@ -65,18 +65,13 @@ dotnet_naming_rule.types_must_be_pascal_case.severity = error
 
 # Interface Names Must Start With I
 dotnet_naming_rule.interfaces_must_start_with_i.symbols = interfaces
-dotnet_naming_rule.interfaces_must_start_with_i.style = i_prefix_style
+dotnet_naming_rule.interfaces_must_start_with_i.style = interface_style
 dotnet_naming_rule.interfaces_must_start_with_i.severity = error
 
 # Type Parameters Must Start With T
 dotnet_naming_rule.type_parameters_must_start_with_t.symbols = type_parameters
-dotnet_naming_rule.type_parameters_must_start_with_t.style = t_prefix_style
+dotnet_naming_rule.type_parameters_must_start_with_t.style = type_style
 dotnet_naming_rule.type_parameters_must_start_with_t.severity = error
-
-# Nonpublic Static Members Must Start With Underscore
-dotnet_naming_rule.private_static_members_must_start_with_underscore.symbols = nonpublic_static_members
-dotnet_naming_rule.private_static_members_must_start_with_underscore.style = underscore_prefix_style
-dotnet_naming_rule.private_static_members_must_start_with_underscore.severity = error
 
 #-------Naming Symbols--------#
 
@@ -88,15 +83,11 @@ dotnet_naming_symbols.functions.applicable_accessibilities = *
 dotnet_naming_symbols.public_members.applicable_kinds = property,field,event
 dotnet_naming_symbols.public_members.applicable_accessibilities = public,internal,protected_internal
 
-# Protected Members
-dotnet_naming_symbols.protected_members.applicable_kinds = property,field,event
-dotnet_naming_symbols.protected_members.applicable_accessibilities = protected,private_protected
+# Nonpublic Members
+dotnet_naming_symbols.nonpublic_members.applicable_kinds = property,field,event
+dotnet_naming_symbols.nonpublic_members.applicable_accessibilities = private,protected,private_protected
 
-# Private Members
-dotnet_naming_symbols.private_members.applicable_kinds = property,field,event
-dotnet_naming_symbols.private_members.applicable_accessibilities = private
-
-# Private Static Members
+# Nonpublic Static Members
 dotnet_naming_symbols.nonpublic_static_members.applicable_kinds = property,field,event
 dotnet_naming_symbols.nonpublic_static_members.applicable_accessibilities = private,protected,private_protected
 dotnet_naming_symbols.nonpublic_static_members.required_modifiers = static
@@ -129,14 +120,17 @@ dotnet_naming_style.pascal_style.capitalization = pascal_case
 # Camel Style
 dotnet_naming_style.camel_style.capitalization = camel_case
 
-# Interface Prefix Style
-dotnet_naming_style.i_prefix_style.required_prefix = I
+# Interface Style
+dotnet_naming_style.interface_style.required_prefix = I
+dotnet_naming_style.interface_style.capitalization = pascal_case
 
-# Type Prefix Style
-dotnet_naming_style.t_prefix_style.required_prefix = T
+# Type Style
+dotnet_naming_style.type_style.required_prefix = T
+dotnet_naming_style.type_style.capitalization = pascal_case
 
 # Underscore Prefix Style
 dotnet_naming_style.underscore_prefix_style.required_prefix = _
+dotnet_naming_style.underscore_prefix_style.capitalization = camel_case
 
 #-----------------------------#
 #     Spacing Preferences     #
