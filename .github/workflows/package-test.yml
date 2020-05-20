@@ -1,0 +1,41 @@
+name: Test package
+
+on:
+  push:
+    branches: [ master ]
+    paths-ignore: [ '*' ]
+  pull_request:
+    branches: [ master ]
+    paths-ignore: [ '*' ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository 👓📗
+        uses: actions/checkout@v2
+
+      - name: Wrap package in project 🌯
+        run: bash ./.github/workflows/scripts/projectize-package.sh
+
+      - name: Cache large unity folders ☁🔽💾
+        uses: actions/cache@v2
+        with:
+          path: Library
+          key: unity-cache
+
+      - name: Run tests 👨‍🔬
+        id: project-test
+        uses: webbertakken/unity-test-runner@v1 # Fails if any test fails
+        env:
+          UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
+        continue-on-error: true # Upload even if some tests fail
+
+      - name: Upload test results 🖨
+        uses: actions/upload-artifact@v2
+        with:
+          name: Test results
+          path: ${{ steps.project-test.outputs.artifactsPath }}
+
+      - name: Verify all tests passed 💯⁉
+        run: bash ./.github/workflows/scripts/verify-none-failed.sh ${{ steps.project-test.outputs.artifactsPath }}
